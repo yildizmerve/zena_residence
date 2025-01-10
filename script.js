@@ -1,54 +1,33 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll(
-    ".content-container, .header-container, footer"
-  );
-  let currentIndex = 0;
+let currentPage = 0;
+let previousPage = -1;
+const pages = document.querySelectorAll(".page");
 
-  const scrollToSection = (index) => {
-    if (index < 0 || index >= sections.length) return;
-    currentIndex = index;
-    sections[currentIndex].scrollIntoView({ behavior: "smooth" });
+function scrollPage(event) {
+  if (event.deltaY > 0) {
+    // Aşağı kaydırma (next page)
+    currentPage = Math.min(currentPage + 1, pages.length - 1);
+  } else {
+    // Yukarı kaydırma (previous page)
+    currentPage = Math.max(currentPage - 1, 0);
+  }
 
-    // Tüm animasyonları sıfırla ve yeniden uygula
-    sections.forEach((section, i) => {
-      const contentBox = section.querySelector(".content-box");
-      const textArea = section.querySelector(".text-area");
-      const textContainer = section.querySelector(".text-container");
+  changePage();
+}
 
-      if (i === currentIndex) {
-        contentBox?.classList.add("animate");
-        textArea?.classList.add("animate");
-        textContainer?.classList.add("animate");
-        section.classList.add("animate");
-      } else {
-        contentBox?.classList.remove("animate");
-        textArea?.classList.remove("animate");
-        textContainer?.classList.remove("animate");
-        section.classList.remove("animate");
-      }
-    });
-  };
+function changePage() {
+  if (previousPage !== -1) {
+    pages[previousPage].classList.remove("active");
+    pages[previousPage].classList.add("deactive");
+  }
 
-  const handleScroll = (event) => {
-    event.preventDefault();
-    const direction = event.deltaY > 0 ? 1 : -1;
-    scrollToSection(currentIndex + direction);
-  };
+  setTimeout(() => {
+    pages[currentPage].classList.remove("deactive");
+    pages[currentPage].classList.add("active");
+  }, 250);
 
-  window.addEventListener("wheel", handleScroll, { passive: false });
-  window.addEventListener("touchstart", (e) => {
-    const startY = e.touches[0].clientY;
+  previousPage = currentPage;
+}
 
-    const touchMoveHandler = (moveEvent) => {
-      const endY = moveEvent.touches[0].clientY;
-      const direction = endY < startY ? 1 : -1;
-      scrollToSection(currentIndex + direction);
-      window.removeEventListener("touchmove", touchMoveHandler);
-    };
+window.addEventListener("wheel", scrollPage);
 
-    window.addEventListener("touchmove", touchMoveHandler, { passive: false });
-  });
-
-  // Sayfa yüklendiğinde ilk bölüme git
-  scrollToSection(currentIndex);
-});
+changePage(); // İlk sayfa yüklendikten sonra aktif hale getir
