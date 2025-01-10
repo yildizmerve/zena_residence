@@ -96,7 +96,7 @@ p {
   transform: translateX(-100vw); /* Görsel solda kaybolur */
 }
 
-#detail .content-box {
+.detail .content-box {
   position: absolute;
   background-color: var(--content-background-transparent);
   max-height: 30vw;
@@ -109,23 +109,23 @@ p {
   transition: bottom 1s ease;
 }
 
-#detail.active .content-box {
+.detail.active .content-box {
   bottom: 0;
 }
 
-#detail.deactive .content-box {
+.detail.deactive .content-box {
   bottom: -30vw; /* Deaktif olduğunda yukarı kaybolur */
 }
 
-#detail img {
+.detail img {
   transform: translateY(100vh); /* Başlangıçta img görünmez */
   transition: transform 1.5s ease;
 }
 
-#detail.active img {
+.detail.active img {
   transform: translateY(0); /* Görsel aktif olduğunda ekrana gelir */
 }
 
-#detail.deactive img {
+.detail.deactive img {
   transform: translateY(-100vh); /* Görsel kaybolur */
 }
