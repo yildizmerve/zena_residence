@@ -107,7 +107,7 @@ img {
     position: absolute;
     right: 0;
     bottom: 0;
-    margin: 2.8rem;
+    margin: 4rem;
     transform: translateX(0);
 }
 
@@ -115,6 +115,10 @@ img {
     font-size: 4.8rem;
     font-weight: bold;
     color: var(--text-color-secondary);
+}
+
+#entry .subtitle #name span{
+    font-size: 1.6rem;
 }
 
 #entry .subtitle #designer {
