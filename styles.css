@@ -116,12 +116,13 @@ p {
 .detail .content-box {
   position: absolute;
   background-color: var(--content-background-transparent);
-  max-height: 30vw;
-  bottom: -30vw;
+  max-height: 40vw;
+  bottom: 0;
   left: 0;
   width: 100vw;
   text-align: left;
   transition: bottom 0.8s ease;
+  transform: translateY(-40vw);
 }
 
 .detail .content-box .title{
@@ -134,7 +135,7 @@ p {
 }
 
 .detail .content-box .description{
-  padding: 0em 0.6em 2em 0.6em;
+  padding: 0em 0.6em 1em 0.6em;
   font-size: 1.6em;
   font-weight: 400;
   display: block;
@@ -142,22 +143,22 @@ p {
 }
 
 .detail.active .content-box {
-  bottom: 0;
+  transform: translateY(0);
 }
 
 .detail.deactive .content-box {
-  bottom: -30vw; /* Deaktif olduğunda yukarı kaybolur */
+  transform: translateY(-40vw);
 }
 
 .detail img {
-  transform: translateY(100vh); /* Başlangıçta img görünmez */
+  transform: translateY(100vh); 
   transition: transform 0.8s ease;
 }
 
 .detail.active img {
-  transform: translateY(0); /* Görsel aktif olduğunda ekrana gelir */
+  transform: translateY(0); 
 }
 
 .detail.deactive img {
-  transform: translateY(-100vh); /* Görsel kaybolur */
+  transform: translateY(-100vh);
 }
