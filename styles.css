@@ -1,7 +1,9 @@
 :root {
   --primary-color: #2c2c2c;
   --text-color: #fff;
+  --text-color-secondary: rgb(129, 129, 129);
   --content-background-transparent: rgba(0, 0, 0, 0.35);
+  
 }
 
 * {
@@ -32,21 +34,21 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  opacity: 0; /* Başlangıçta görünmez */
-  transform: translateY(100vh); /* Sayfa başlangıçta ekrandan dışarıda */
-  transition: opacity 1s ease, transform 1s ease; /* Opaklık ve konum geçişi */
+  opacity: 0; 
+  transform: translateY(100vh); 
+  transition: opacity 0.8s ease, transform 1s ease; 
   background-color: var(--primary-color);
   color: var(--text-color);
 }
 
 .page.active {
   opacity: 1;
-  transform: translateY(0); /* Sayfa aktif olduğunda ekrana gelir */
+  transform: translateY(0);
 }
 
 .page.deactive {
   opacity: 0;
-  transform: translateY(-100vh); /* Sayfa deaktif olduğunda kaybolur */
+  transform: translateY(-100vh); 
 }
 
 h1 {
@@ -66,12 +68,27 @@ p {
   align-items: start;
   text-align: left;
   position: absolute;
-  bottom: 15vw;
+  bottom: 30vw;
   left: 0;
-  width: 30vw;
+  width: 40vw;
   padding: 3rem 1.6rem;
   transform: translateX(-30vw);
-  transition: transform 1.5s ease;
+  transition: transform 0.8s ease;
+}
+
+#aboutme{
+  transform: translateY(0);
+}
+
+#aboutme .content-box .title{
+  font-size: 4em;
+  margin: .4em 0;
+  font-family: 'Tangerine';
+}
+
+#aboutme .content-box .description{
+  font-size: 1.8em;
+  color: var(--text-color-secondary);
 }
 
 #aboutme.active .content-box {
@@ -83,17 +100,17 @@ p {
 }
 
 #aboutme img {
-  transform: translateX(100vw); /* Başlangıçta görseller sağda kaybolur */
-  transition: transform 1.5s ease;
+  transform: translateX(100vw); 
+  transition: transform 0.8s ease;
   z-index: -1;
 }
 
 #aboutme.active img {
-  transform: translateX(0); /* Görsel ekrana gelir */
+  transform: translateX(0); 
 }
 
 #aboutme.deactive img {
-  transform: translateX(-100vw); /* Görsel solda kaybolur */
+  transform: translateX(100vw);
 }
 
 .detail .content-box {
@@ -104,9 +121,24 @@ p {
   left: 0;
   width: 100vw;
   text-align: left;
-  padding: 3rem 1.6rem;
-  padding-bottom: 0;
-  transition: bottom 1s ease;
+  transition: bottom 0.8s ease;
+}
+
+.detail .content-box .title{
+  padding: 1em 0.6em;
+  text-decoration: underline;
+  font-size: 1.8em;
+  font-weight: bold;
+  display: block;
+  width: 100vw;
+}
+
+.detail .content-box .description{
+  padding: 0em 0.6em 2em 0.6em;
+  font-size: 1.6em;
+  font-weight: 400;
+  display: block;
+  width: 100vw;
 }
 
 .detail.active .content-box {
@@ -119,7 +151,7 @@ p {
 
 .detail img {
   transform: translateY(100vh); /* Başlangıçta img görünmez */
-  transition: transform 1.5s ease;
+  transition: transform 0.8s ease;
 }
 
 .detail.active img {

@@ -17,9 +17,9 @@ function scrollPageMobile(event) {
   const touch = event.changedTouches[0];
   const endY = touch.clientY;
 
-  if (startY - endY > 50) {
+  if (startY - endY > 200) {
     currentPage = Math.min(currentPage + 1, pages.length - 1);
-  } else if (endY - startY > 50) {
+  } else if (endY - startY > 200) {
     currentPage = Math.max(currentPage - 1, 0);
   }
 
@@ -35,7 +35,7 @@ function changePage() {
   setTimeout(() => {
     pages[currentPage].classList.remove("deactive");
     pages[currentPage].classList.add("active");
-  }, 1500);
+  }, 0);
 
   previousPage = currentPage;
 }
