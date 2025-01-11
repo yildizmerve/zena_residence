@@ -17,9 +17,9 @@ function scrollPageMobile(event) {
   const touch = event.changedTouches[0];
   const endY = touch.clientY;
 
-  if (startY - endY > 200) {
+  if (startY - endY > 50) {
     currentPage = Math.min(currentPage + 1, pages.length - 1);
-  } else if (endY - startY > 200) {
+  } else if (endY - startY > 50) {
     currentPage = Math.max(currentPage - 1, 0);
   }
 
